@@ -35,7 +35,10 @@
     height: 120px;
 }
 
-/*--------------------------------------------Map*/
-div#map {
-    min-height: 360px;
+
+/*--------------------------------------------map.css*/
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
 }
