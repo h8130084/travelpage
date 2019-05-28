@@ -30,15 +30,28 @@
 			<a href="#attractions" class="hvr-sweep-to-bottom">Tourist Attractions</a>
 			<a href="#accomidation" class="hvr-sweep-to-bottom">Accomadation</a>
 			<a href="#food" class="hvr-sweep-to-bottom">Eat and Drink</a>
+			<input id="pac-input" class="controls" type="text" placeholder="Enter your destination!">
 		</div>
 	</header>
+
+
+	<section>
+		<div class="row row-table">
+			<div class="col-xs-12 ">
+				
+			</div>
+		</div>
+	</section>
 
 
 	<!-- google maps row  -->
 	<section class="container-fluid">
 		<div class="row row-table">
 			<div class="col-xs-12 ">
+				
 				<div id="map"></div>
+
+
 			</div>
 		</div>
 	</section>
@@ -46,8 +59,7 @@
 	<!-- attractions row  -->
 	<section class="container-fluid">
 		<div class="row col-xs-12">
-
-
+			<h2> Attractions</h2>
 		</div>
 		</div>
 	</section>
@@ -57,7 +69,7 @@
 	<section class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-
+				<h2> Accomodation</h2>
 			</div>
 		</div>
 	</section>
@@ -66,7 +78,7 @@
 	<section class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-
+				<h2> Food and Drink</h2>
 			</div>
 		</div>
 	</section>
@@ -77,9 +89,11 @@
 
 	<!-- API key AIzaSyCsmI5iuL3AjwGiUlX8nfm0twnNFzywJg0 -->
 
-
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsmI5iuL3AjwGiUlX8nfm0twnNFzywJg0&callback=initMap" async defer></script>
 	<script src="assets/js/map.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsmI5iuL3AjwGiUlX8nfm0twnNFzywJg0&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+
 
 </body>
 
