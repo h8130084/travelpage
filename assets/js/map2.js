@@ -26,7 +26,9 @@ function initMap() {
  searchBox.addListener('places_changed', function() {
   var places = searchBox.getPlaces();
 
-
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+      
   if (places.length == 0) {
    return;
   }
@@ -76,11 +78,7 @@ function initMap() {
    type: ['restaurant']
   };
 
- var request = {
-   location: bounds.getCenter(),
-   radius: '500',
-   type: ['lodging']
-  };
+
   
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
@@ -93,7 +91,7 @@ function initMap() {
      var place = results[i];
      createMarker(results[i]);
     }
-    map.setZoom(13)
+    map.setZoom(14)
    }
   }
   console.log("test");
@@ -101,6 +99,7 @@ function initMap() {
   function createMarker(place) {
    var marker = new google.maps.Marker({
     map: map,
+    label: labels[labelIndex++ % labels.length],
     position: place.geometry.location
    });
 
