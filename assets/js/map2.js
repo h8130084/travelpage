@@ -1,72 +1,133 @@
-/*
+//global variables//
+var allMarkers = [];
+
+
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -33.8688, lng: 151.2195 },
-    zoom: 13,
-    mapTypeId: 'roadmap'
+ var map = new google.maps.Map(document.getElementById('map'), {
+  center: { lat: -33.8688, lng: 151.2195 },
+  zoom: 13,
+  mapTypeId: 'roadmap'
+ });
+
+
+
+ // Create the search box and link it to the UI element.
+ var input = document.getElementById('pac-input');
+ var searchBox = new google.maps.places.SearchBox(input);
+
+ // Bias the SearchBox results towards current map's viewport.
+ map.addListener('bounds_changed', function() {
+  searchBox.setBounds(map.getBounds());
+ });
+
+ var markers = [];
+ // Listen for the event fired when the user selects a prediction and retrieve
+ // more details for that place.
+ searchBox.addListener('places_changed', function() {
+  var places = searchBox.getPlaces();
+
+
+  if (places.length == 0) {
+   return;
+  }
+
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+   marker.setMap(null);
   });
+  markers = [];
 
-  // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
+  // For each place, get the icon, name and location.
+  var bounds = new google.maps.LatLngBounds();
+  places.forEach(function(place) {
+   if (!place.geometry) {
+    console.log("Returned place contains no geometry");
+    return;
+   }
+   var icon = {
+    url: place.icon,
+    size: new google.maps.Size(71, 71),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(17, 34),
+    scaledSize: new google.maps.Size(25, 25)
+   };
 
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
+   // Create a marker for each place.
+   markers.push(new google.maps.Marker({
+    map: map,
+    icon: icon,
+    title: place.name,
+    position: place.geometry.location
+   }));
+
+   if (place.geometry.viewport) {
+    // Only geocodes have viewport.
+    bounds.union(place.geometry.viewport);
+   }
+   else {
+    bounds.extend(place.geometry.location);
+   }
   });
+  map.fitBounds(bounds);
 
-  var markers = [];
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+  var request = {
+   location: bounds.getCenter(),
+   radius: '500',
+   type: ['restaurant']
+  };
 
-    if (places.length == 0) {
-      return;
+ var request = {
+   location: bounds.getCenter(),
+   radius: '500',
+   type: ['lodging']
+  };
+  
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+
+  //does the server work - e.g. no errors, if ok proceed with create marker function//
+  function callback(results, status) {
+   clearMarkers();
+   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+     var place = results[i];
+     createMarker(results[i]);
     }
+   }
+  }
+  console.log("test");
 
-    // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
+  function createMarker(place) {
+   var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+   });
 
-    // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      if (!place.geometry) {
-        console.log("Returned place contains no geometry");
-        return;
-      }
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
+allMarkers.push(marker)
+   // adds info window on click//
+   infoWindow = new google.maps.InfoWindow;
 
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location
-      }));
+   google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.setContent(place.name);
+    infoWindow.open(map, this);
+    console.log("test3");
+   });
+  }
+  
+   function clearMarkers() {
+  for (var i = 0; i < allMarkers.length; i++) {
+   if (allMarkers[i] != null) {
+    allMarkers[i].setMap(null);
+   }
+  }
+  allMarkers = [];
+ }
 
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      }
-      else {
-        bounds.extend(place.geometry.location);
-      }
-    });
-    map.fitBounds(bounds);
-  });
+ });
+
 }
-*/
 
+/*
 //global vairables//
 var map;
 var service;
@@ -81,48 +142,57 @@ function initMap() {
     center: Leeds,
     zoom: 15
   });
-  //loads up all restaurants within  x meter radius of leeds/ location from line 10//
-  var request = {
-    location: Leeds,
-    radius: '300',
-    type: ['restaurant']
-  };
 
-  //callback//
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
+var input = document.getElementById('pac-input');
+  //trying to include a search box - adds the search box 
+  //but brings an error stating search box not defined - 
+  /*search box work but does not link to map//
+    
+   searchBox = new google.maps.places.SearchBox(input); 
 
 
-// function to check there are no errors such as a server error, if ok run create marker function//
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      var place = results[i];
-      createMarker(results[i]);
+      //loads up all restaurants within  x meter radius of leeds/ location from line 10//
+      var request = {
+        location: Leeds,
+        radius: '300',
+        type: ['restaurant']
+      };
+
+      //callback//
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
     }
-  }
-}
-
-//function to create markers//
-function createMarker(place) {
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  // adds info window on click//
-  infoWindow = new google.maps.InfoWindow;
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.setContent(place.name);
-    infoWindow.open(map, this);
-  });
-}
 
 
-// addthe rest of the code in trying to include a search bar//
-/*
+    // function to check there are no errors such as a server error, if ok run create marker function//
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          var place = results[i];
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    //function to create markers//
+    function createMarker(place) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      // adds info window on click//
+      infoWindow = new google.maps.InfoWindow;
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(place.name);
+        infoWindow.open(map, this);
+      });
+    }
+  
+
+  // addthe rest of the code in trying to include a search bar//
+  /*
  searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
