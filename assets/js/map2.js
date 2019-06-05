@@ -93,6 +93,7 @@ function initMap() {
      var place = results[i];
      createMarker(results[i]);
     }
+    map.setZoom(13)
    }
   }
   console.log("test");
