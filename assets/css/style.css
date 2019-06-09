@@ -1,4 +1,5 @@
 /* Nav bar */
+
 #navbar {
   overflow: hidden;
   background-color: #333;
@@ -14,6 +15,7 @@
 }
 
 /* Page content */
+
 .content {
   padding: 16px;
 }
@@ -24,23 +26,25 @@
   width: 100%;
 }
 
-.sticky + .content {
+.sticky+.content {
   padding-top: 60px;
 }
 
 /*--------------------------------------------Hover.css*/
 
 .hvr-sweep-to-bottom:before {
-    background: rgba(0, 0, 0, 0.2);
-    height: 120px;
+  background: rgba(0, 0, 0, 0.2);
+  height: 120px;
 }
 
 
 /*--------------------------------------------map.css*/
+
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
+
 #map {
-    min-height: 360px;
+  min-height: 360px;
 
 }
 
@@ -48,34 +52,6 @@
   font-family: Roboto;
   font-size: 15px;
   font-weight: 300;
-}
-
-#infowindow-content .title {
-  font-weight: bold;
-}
-
-#infowindow-content {
-  display: none;
-}
-
-#map #infowindow-content {
-  display: inline;
-}
-
-.pac-card {
-  margin: 10px 10px 0 0;
-  border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  font-family: Roboto;
-}
-
-#pac-container {
-  padding-bottom: 12px;
-  margin-right: 12px;
 }
 
 .pac-controls {
@@ -111,68 +87,53 @@
   font-weight: 500;
   padding: 6px 12px;
 }
-#target {
-  width: 345px;
+
+
+/* page css*/
+
+.main-section-column {
+  background-color: #D5DBE5;
 }
 
-  table {
-        font-size: 12px;
-      }
-      
-      #listing {
-      
-        width: 200px;
-        height: 470px;
-        overflow: auto;
-        left: 442px;
-        top: 0px;
-        cursor: pointer;
-        overflow-x: hidden;
-      }
-      #findhotels {
-        position: absolute;
-        text-align: right;
-        width: 100px;
-        font-size: 14px;
-        padding: 4px;
-        z-index: 5;
-        background-color: #fff;
-      }
-      #locationField {
-        position: absolute;
-        width: 190px;
-        height: 25px;
-        left: 108px;
-        top: 0px;
-        z-index: 5;
-        background-color: #fff;
-      }
+.footer {
+  background-color: #E5EDF9;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/* check box row*/
+
+.checkboxes {
+  padding-bottom: 25px;
+  padding-top: 25px;
+
+}
 
 
-      .placeIcon {
-        width: 20px;
-        height: 34px;
-        margin: 4px;
-      }
-      .hotelIcon {
-        width: 24px;
-        height: 24px;
-      }
-      #resultsTable {
-        border-collapse: collapse;
-        width: 240px;
-      }
-      #rating {
-        font-size: 13px;
-        font-family: Arial Unicode MS;
-      }
-      .iw_table_row {
-        height: 18px;
-      }
-      .iw_attribute_name {
-        font-weight: bold;
-        text-align: right;
-      }
-      .iw_table_icon {
-        text-align: right;
-      }
+/* search bar row*/
+
+.search-bar {
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+
+}
+
+#resultsTable {
+  border-collapse: collapse;
+  width: 240px;
+}
+#rating {
+  font-size: 13px;
+  font-family: Arial Unicode MS;
+}
+.iw_table_row {
+  height: 18px;
+}
+.iw_attribute_name {
+  font-weight: bold;
+  text-align: right;
+}
+.iw_table_icon {
+  text-align: right;
+}

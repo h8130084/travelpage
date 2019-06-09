@@ -1,13 +1,12 @@
 //sort html//
 //make check box look better and//
-//make it so you can only choose one. can you pre populate it?//
+
 //sort css and table//
 // sort nav bar//
 
 //global variables//
 var allMarkers = [];
 var infoWindow;
-var addResult;
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 
@@ -107,11 +106,11 @@ function callback(results, status) {
 
             createMarker(results[i]);
             htmlString += `<tr>
+                <td>${place.photos}<td>
                 <td>${place.name}<td>
-                <td>Column 2<td>
-                <td>Column 3<td>
-                <td>Column 4<td>
-            </tr>`
+                <td>${place.opening_hours}<td>
+                <td>${place.rating}<td>
+            </tr>`;
 
         }
 

@@ -15,7 +15,6 @@
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-
 	<!-- taken from bootstrap and cdnjs -->
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
@@ -23,80 +22,93 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- taken from google maps api -->
 
-
 </head>
 
 <body>
 
 	<header>
 		<div id="navbar">
-			<input id="pac-input" class="controls" type="text" placeholder="Enter your destination!">
+
 		</div>
 	</header>
 
 
-<div class="">
-	<input type="checkbox" checked="checked" id="accomodation-box"> Accomodation
-	<input type="checkbox" id="bar-box">Bars and Restaurants
-	<input type="checkbox" id="attraction-box">Attractions
-</div>
+	<section class="container-fluid main-section-column">
 
+		<section class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 ">
+					<h1> Find your destination</h1>
+				</div>
+			</div>
+		</section>
 
-	<section class="container-fluid">
-		<div class="row row-table">
+		<div class="sub-heading row">
 			<div class="col-xs-12 ">
-				<h1> Find your destination</h1>
+				<h3> Choose what you are searching for and then start typing your destination</h3>
 			</div>
 		</div>
-	</section>
 
-
-
-	<!-- google maps row  -->
-	<section class="container-fluid">
-		<div class="row row-table">
-			<div class="col-xs-12 ">
-				<div id="map"></div>
-
+		<div class="search-bar row">
+			<div class="col-md-6 col-md-offset-3">
+				<input id="pac-input" class="controls" type="text" placeholder="Enter your destination!">
 			</div>
 		</div>
-	</section>
 
-	<div id="listing">
-		<table id="resultsTable">
-			<tbody id="results"></tbody>
-		</table>
-	</div>
+		<div class="checkboxes row">
+			<div class="col-xs-12">
+				<input type="checkbox" checked="checked" id="accomodation-box"> Accomodation
+				<input type="checkbox" id="bar-box">Bars and Restaurants
+				<input type="checkbox" id="attraction-box">Attractions
+			</div>
+		</div>
 
-	<div style="display: none">
-		<div id="info-content">
-			<table>
-				<tr id="iw-url-row" class="iw_table_row">
-					<td id="iw-icon" class="iw_table_icon"></td>
-					<td id="iw-url"></td>
-				</tr>
-				<tr id="iw-address-row" class="iw_table_row">
-					<td class="iw_attribute_name">Address:</td>
-					<td id="iw-address"></td>
-				</tr>
-				<tr id="iw-phone-row" class="iw_table_row">
-					<td class="iw_attribute_name">Telephone:</td>
-					<td id="iw-phone"></td>
-				</tr>
-				<tr id="iw-rating-row" class="iw_table_row">
-					<td class="iw_attribute_name">Rating:</td>
-					<td id="iw-rating"></td>
-				</tr>
-				<tr id="iw-website-row" class="iw_table_row">
-					<td class="iw_attribute_name">Website:</td>
-					<td id="iw-website"></td>
-				</tr>
+
+		<!-- google maps row  -->
+		<section class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 ">
+					<div id="map"></div>
+
+				</div>
+			</div>
+		</section>
+
+		<div id="listing">
+			<table id="resultsTable">
+				<tbody id="results"></tbody>
 			</table>
 		</div>
-	</div>
+
+		<div style="display: none">
+			<div id="info-content">
+				<table>
+					<tr id="iw-url-row" class="iw_table_row">
+						<td id="iw-icon" class="iw_table_icon"></td>
+						<td id="iw-url"></td>
+					</tr>
+					<tr id="iw-address-row" class="iw_table_row">
+						<td class="iw_attribute_name">Address:</td>
+						<td id="iw-address"></td>
+					</tr>
+					<tr id="iw-phone-row" class="iw_table_row">
+						<td class="iw_attribute_name">Telephone:</td>
+						<td id="iw-phone"></td>
+					</tr>
+					<tr id="iw-rating-row" class="iw_table_row">
+						<td class="iw_attribute_name">Rating:</td>
+						<td id="iw-rating"></td>
+					</tr>
+					<tr id="iw-website-row" class="iw_table_row">
+						<td class="iw_attribute_name">Website:</td>
+						<td id="iw-website"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
 
 
-	<!-- accomodation row  -->
+		<!-- accomodation row  -
 	<section class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
@@ -105,7 +117,7 @@
 		</div>
 	</section>
 
-	<!-- food row  -->
+	<!-- food row  
 	<section class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
@@ -115,16 +127,21 @@
 	</section>
 
 
-	<!-- attractions row  -->
+	<!-- attractions row  
 	<section class="container-fluid">
 		<div class="row col-xs-12">
 			<h2> Attractions</h2>
 		</div>
 		</div>
 	</section>
-
-	<footer class="container-fluid">
-
+-->
+	</section>
+	<footer class="container-fluid footer">
+<div class="">
+	<p> This website was created with the use of the google maps API documentation 
+	in order to allow users to search for hotels, bars and restaurants and 
+	attactions within a radius of the search locaiton</p>
+</div>
 	</footer>
 
 	<!-- API key AIzaSyCsmI5iuL3AjwGiUlX8nfm0twnNFzywJg0	-->
