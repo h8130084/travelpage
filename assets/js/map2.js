@@ -1,12 +1,12 @@
-// add function to serach for correct place// - add a new  dropdown box so users can search for specified  place//
 //sort html//
+//make check box look better and//
+//make it so you can only choose one. can you pre populate it?//
 //sort css and table//
 // sort nav bar//
 
 //global variables//
 var allMarkers = [];
 var infoWindow;
-var hostnameRegexp = new RegExp('^https?://.+?/');
 var addResult;
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
@@ -30,6 +30,9 @@ function initMap() {
         searchBox.setBounds(map.getBounds());
     });
 
+$('input[type="checkbox"]').on('change', function() {
+   $('input[type="checkbox"]').not(this).prop('checked', false);
+});
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -38,13 +41,39 @@ function initMap() {
         var new_location = new google.maps.LatLng(places[0].geometry.location.lat(), places[0].geometry.location.lng());
         map.setCenter(new_location);
 
-        var accomodationCheckBox = document.getElementById('accomodation-box').checked
+        var accomodationCheckBox = document.getElementById('accomodation-box').checked;
         console.log(accomodationCheckBox);
 
         if (accomodationCheckBox == true) {
-            var searchType = "lodging"
+            var searchType = "lodging";
+        }
+        
+          var request = {
+            location: new_location,
+            radius: '500',
+            type: [searchType]
+        };
+
+        var barCheckBox = document.getElementById('bar-box').checked;
+        console.log(barCheckBox);
+
+        if (barCheckBox == true) {
+            var searchType = "restaurant";
+            var searchType = "bar";
         }
 
+  var request = {
+            location: new_location,
+            radius: '500',
+            type: [searchType]
+        };
+        
+        var museumCheckBox = document.getElementById('attraction-box').checked;
+        console.log(museumCheckBox);
+
+        if (museumCheckBox == true) {
+            var searchType = "museum";
+        }
 
         var request = {
             location: new_location,
@@ -52,15 +81,16 @@ function initMap() {
             type: [searchType]
         };
 
+
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, callback);
     });
-    
-            // Clear out the old markers.
-        markers.forEach(function(marker) {
-          marker.setMap(null);
-        });
-        markers = [];
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+        marker.setMap(null);
+    });
+    markers = [];
 }
 
 
@@ -88,8 +118,8 @@ function callback(results, status) {
         console.log(htmlString);
         $('#results').html(htmlString);
     }
-    
-    
+
+
 }
 
 function createMarker(place) {
@@ -111,14 +141,14 @@ function createMarker(place) {
 }
 
 
-    function clearMarkers() {
-          for (var i = 0; i < allMarkers.length; i++) {
-            if (allMarkers[i] != null) {
-              allMarkers[i].setMap(null);
-            }
-          }
-          allMarkers = [];
+function clearMarkers() {
+    for (var i = 0; i < allMarkers.length; i++) {
+        if (allMarkers[i] != null) {
+            allMarkers[i].setMap(null);
+        }
     }
+    allMarkers = [];
+}
 
 
 
