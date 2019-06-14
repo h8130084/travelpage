@@ -2,10 +2,12 @@
 
 
 //sort html//
-//make check box look better and//
+//make check box look better //
 
 //sort css and table//
-// sort nav bar//
+
+// sort nav bar - make iut link to the page and sort hte issue when it comes up
+//
 
 //sticky nav bar//
 
