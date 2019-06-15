@@ -1,13 +1,10 @@
 
+//make check box look better?? //
+//sort css //
+//sort page lay out//
+//sort fonts//
 
 
-//sort html//
-//make check box look better //
-
-//sort css and table//
-
-// sort nav bar - make iut link to the page and sort hte issue when it comes up
-//
 
 //sticky nav bar//
 
@@ -121,25 +118,53 @@ $('input[type="checkbox"]').on('change', function() {
     markers = [];
 }
 
-
-
 function callback(results, status) {
     clearMarkers();
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-        var htmlString = '';
-
-        for (var i = 0; i < results.length; i++) {
+        var htmlString = `<tr>
+                <td>Location<td>
+                <td>Name<td>
+                <td>Rating<td>
+                <td>Number of Ratings<td>
+                
+            </tr>`;
+        
+        for (var i = 0; i < 8; i++) {
             var place = results[i];
             console.log(place);
 
             createMarker(results[i]);
+            
+            var mapLetter=labels[labelIndex -1];
+            var name=place.name;
+            var rating=place.rating;
+            var totalRating=place.user_ratings_total;
+            
+            
+            
+            if (rating == undefined){
+              rating = "no rating avilable";
+            }
+            
+             if (totalRating == undefined){
+              totalRating = "no rating avilable";
+            }
+            
+            
+            
             htmlString += `<tr>
-                <td>${place.photos}<td>
-                <td>${place.name}<td>
-                <td>${place.opening_hours}<td>
-                <td>${place.rating}<td>
+                <td class="">${mapLetter}<td>
+                <td>${name}<td>
+                <td>${rating}<td>
+                <td>${totalRating}<td>
+                
             </tr>`;
+
+
+
+
+
 
         }
 
@@ -156,7 +181,7 @@ function createMarker(place) {
         label: labels[labelIndex++ % labels.length],
         position: place.geometry.location
     });
-
+    
     allMarkers.push(marker);
     // adds info window on click//
     infoWindow = new google.maps.InfoWindow;
@@ -176,10 +201,8 @@ function clearMarkers() {
         }
     }
     allMarkers = [];
+    labelIndex = 0;
 }
-
-
-
 
 
 
