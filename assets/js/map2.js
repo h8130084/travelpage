@@ -98,11 +98,14 @@ $('input[type="checkbox"]').on('change', function() {
 
         if (museumCheckBox == true) {
             var searchType = "museum";
+            var searchType = "movie_theater";
+            var searchType = "art_gallery";
+            var searchType = "casino";
         }
 
         var request = {
             location: new_location,
-            radius: '500',
+            radius: '2000',
             type: [searchType]
         };
 
@@ -130,7 +133,7 @@ function callback(results, status) {
                 
             </tr>`;
         
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < results.length; i++) {
             var place = results[i];
             console.log(place);
 
