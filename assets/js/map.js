@@ -1,8 +1,34 @@
-//sort html//
-//make check box look better and//
 
-//sort css and table//
-// sort nav bar//
+//make check box look better?? //
+//sort css //
+//sort page lay out//
+//sort fonts//
+
+
+
+//sticky nav bar//
+
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+
+
 
 //global variables//
 var allMarkers = [];
@@ -72,11 +98,14 @@ $('input[type="checkbox"]').on('change', function() {
 
         if (museumCheckBox == true) {
             var searchType = "museum";
+            var searchType = "movie_theater";
+            var searchType = "art_gallery";
+            var searchType = "casino";
         }
 
         var request = {
             location: new_location,
-            radius: '500',
+            radius: '2000',
             type: [searchType]
         };
 
@@ -92,25 +121,53 @@ $('input[type="checkbox"]').on('change', function() {
     markers = [];
 }
 
-
-
 function callback(results, status) {
     clearMarkers();
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-        var htmlString = '';
-
+        var htmlString = `<tr>
+                <td>Location<td>
+                <td>Name<td>
+                <td>Rating<td>
+                <td>Number of Ratings<td>
+                
+            </tr>`;
+        
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
             console.log(place);
 
             createMarker(results[i]);
+            
+            var mapLetter=labels[labelIndex -1];
+            var name=place.name;
+            var rating=place.rating;
+            var totalRating=place.user_ratings_total;
+            
+            
+            
+            if (rating == undefined){
+              rating = "no rating avilable";
+            }
+            
+             if (totalRating == undefined){
+              totalRating = "no rating avilable";
+            }
+            
+            
+            
             htmlString += `<tr>
-                <td>${place.photos}<td>
-                <td>${place.name}<td>
-                <td>${place.opening_hours}<td>
-                <td>${place.rating}<td>
+                <td class="">${mapLetter}<td>
+                <td>${name}<td>
+                <td>${rating}<td>
+                <td>${totalRating}<td>
+                
             </tr>`;
+
+
+
+
+
 
         }
 
@@ -127,7 +184,7 @@ function createMarker(place) {
         label: labels[labelIndex++ % labels.length],
         position: place.geometry.location
     });
-
+    
     allMarkers.push(marker);
     // adds info window on click//
     infoWindow = new google.maps.InfoWindow;
@@ -147,10 +204,8 @@ function clearMarkers() {
         }
     }
     allMarkers = [];
+    labelIndex = 0;
 }
-
-
-
 
 
 
