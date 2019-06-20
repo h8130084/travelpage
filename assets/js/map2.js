@@ -1,24 +1,9 @@
-// Create a site that calls on the Google Maps API and/or 
-// the Google Places API (or similar) to allow users to
-// search for their next holiday destination. You'll want help your users:
-// Select a destination city
-// Find tourist attractions
-// Find accommodation
-// Find bars and restaurants
-// Provide search results in a manner that is visually appealing 
-// for your user (by drawing on the skills you have
-// learned in User-Centric Frontend Development)
-//make check box look better?? //
-//sort css //
-//sort page lay out//
-//sort fonts//
-
-
-
 //sticky nav bar//
 
+
+// W3 schools
 // When the user scrolls the page, execute myFunction 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() { myFunction() };
 
 // Get the navbar
 var navbar = document.getElementById("navbar");
@@ -28,17 +13,16 @@ var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    }
+    else {
+        navbar.classList.remove("sticky");
+    }
 }
+// W3 schools
 
-
-
-
-
+// google maps api documentatation used
 //global variables//
 var allMarkers = [];
 var infoWindow;
@@ -49,7 +33,6 @@ var map;
 
 function initMap() {
     var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
-
     map = new google.maps.Map(document.getElementById('map'), {
         center: pyrmont,
         zoom: 15
@@ -64,9 +47,12 @@ function initMap() {
         searchBox.setBounds(map.getBounds());
     });
 
-$('input[type="checkbox"]').on('change', function() {
-   $('input[type="checkbox"]').not(this).prop('checked', false);
-});
+
+
+
+    $('input[type="checkbox"]').on('change', function() {
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+    });
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -81,8 +67,8 @@ $('input[type="checkbox"]').on('change', function() {
         if (accomodationCheckBox == true) {
             var searchType = "lodging";
         }
-        
-          var request = {
+
+        var request = {
             location: new_location,
             radius: '500',
             type: [searchType]
@@ -96,19 +82,17 @@ $('input[type="checkbox"]').on('change', function() {
             var searchType = "bar";
         }
 
-  var request = {
+        var request = {
             location: new_location,
             radius: '500',
             type: [searchType]
         };
-        
+
         var museumCheckBox = document.getElementById('attraction-box').checked;
         console.log(museumCheckBox);
 
         if (museumCheckBox == true) {
             var searchType = "museum";
-
-        
         }
 
         var request = {
@@ -134,55 +118,46 @@ function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
         var htmlString = `<tr>
-                <td>Location<td>
-                <td>Name<td>
-                <td>Rating<td>
-                <td>Number of Ratings<td>
+                <td> <b>Location<td>
+                <td> <b>Name<td>
+                <td> <b>Rating<td>
+                <td> <b>Number of Ratings<td>
                 
             </tr>`;
-        
+
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
             console.log(place);
 
             createMarker(results[i]);
-            
-            var mapLetter=labels[labelIndex -1];
-            var name=place.name;
-            var rating=place.rating;
-            var totalRating=place.user_ratings_total;
-            
-            
-            
-            if (rating == undefined){
-              rating = "no rating avilable";
+
+            var mapLetter = labels[labelIndex - 1];
+            var name = place.name;
+            var rating = place.rating;
+            var totalRating = place.user_ratings_total;
+
+
+            if (rating == undefined) {
+                rating = "no rating avilable";
             }
-            
-             if (totalRating == undefined){
-              totalRating = "no rating avilable";
+
+            if (totalRating == undefined) {
+                totalRating = "no rating avilable";
             }
-            
-            
-            
+
+
             htmlString += `<tr>
-                <td class="">${mapLetter}<td>
+                <td>${mapLetter}<td>
                 <td>${name}<td>
                 <td>${rating}<td>
                 <td>${totalRating}<td>
                 
             </tr>`;
-
-
-
-
-
-
         }
 
         console.log(htmlString);
         $('#results').html(htmlString);
     }
-
 
 }
 
@@ -192,7 +167,7 @@ function createMarker(place) {
         label: labels[labelIndex++ % labels.length],
         position: place.geometry.location
     });
-    
+
     allMarkers.push(marker);
     // adds info window on click//
     infoWindow = new google.maps.InfoWindow;
