@@ -103,6 +103,10 @@ rather than be provided with information they may not want. It also allowed a bi
 The CSS across the whole site has been amended on a number of ocassions. 
 After feedback on my previous project I havd decided with a 2 colour website rather than a host of colours.
 
+When testing the final website I realised that users were able to deselect thier option which would mean there was no option selected
+and the search would not run correctyl. Therefore I have added in JS to stop the user being able to deselect thier option so the user will always have one and only one check box 
+selected for thier search.
+
 I had many trial by error attmeptes at getting the JavaScript code to run correctly on the majority of the of the functionality of the code.
 
 
@@ -115,6 +119,7 @@ The deployment was complted through github
 * I have used google maps API documentation to help implement the map functionality and the search bar which has been used thouhgout the map2.js file
 * I used w3school website for assistnace with learning how to incorperate a sticky nav bar
 * I used google fonts to style the font on the page
+* I used mockflow to make a wireframe for the intiail planning and idea phase 
 
 # Acknowledgement
 

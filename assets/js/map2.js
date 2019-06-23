@@ -1,35 +1,39 @@
 //sticky nav bar//
 
-
-// W3 schools
-// When the user scrolls the page, execute myFunction 
+// W3 schools//
+// When the user scrolls the page, execute myFunction //
 window.onscroll = function() { myFunction() };
 
 // Get the navbar
 var navbar = document.getElementById("navbar");
 
-// Get the offset position of the navbar
+// Get the offset position of the navbar//
 var sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+// Add the sticky class to the navbar when you reach its scroll position.//
 function myFunction() {
     if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
+        navbar.classList.add("sticky");
     }
     else {
         navbar.classList.remove("sticky");
     }
 }
-// W3 schools
+// W3 schools//
 
-// google maps api documentatation used
+
+
+// google maps api documentatation used//
+
+
+
+
+
 //global variables//
 var allMarkers = [];
 var infoWindow;
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
-
-
 
 
 function initMap() {
@@ -53,16 +57,13 @@ function initMap() {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
     
-    $("#checkboxes").click(function(e) { 
-      var checkbox = $(this);
-      if (checkbox.is(":checked")) {
-       //check it 
-      } else {
-       // prevent from being unchecked
-        this.checked=!this.checked;
-      }
-   });
    
+//   stops user from unselecting a checkbox and in turn ensures at least one tickbox is always selected
+   $('.tick').on('change', function(e) {
+    if ($('.tick:checked').length == 0 && !this.checked)
+    	this.checked = true;
+});
+
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -72,7 +73,6 @@ function initMap() {
         map.setCenter(new_location);
 
         var accomodationCheckBox = document.getElementById('accomodation-box').checked;
-        console.log(accomodationCheckBox);
 
         if (accomodationCheckBox == true) {
             var searchType = "lodging";
@@ -85,7 +85,6 @@ function initMap() {
         };
 
         var barCheckBox = document.getElementById('bar-box').checked;
-        console.log(barCheckBox);
 
         if (barCheckBox == true) {
             var searchType = "restaurant";
@@ -99,7 +98,6 @@ function initMap() {
         };
 
         var museumCheckBox = document.getElementById('attraction-box').checked;
-        console.log(museumCheckBox);
 
         if (museumCheckBox == true) {
             var searchType = "museum";
@@ -137,7 +135,6 @@ function callback(results, status) {
 
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
-            console.log(place);
 
             createMarker(results[i]);
 
@@ -165,7 +162,6 @@ function callback(results, status) {
             </tr>`;
         }
 
-        console.log(htmlString);
         $('#results').html(htmlString);
     }
 
@@ -185,7 +181,6 @@ function createMarker(place) {
     google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(place.name);
         infoWindow.open(map, this);
-        console.log("test3");
     });
 }
 
