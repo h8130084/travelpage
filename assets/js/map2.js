@@ -29,7 +29,8 @@ var infoWindow;
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 
-var map;
+
+
 
 function initMap() {
     var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
@@ -48,11 +49,20 @@ function initMap() {
     });
 
 
-
-
     $('input[type="checkbox"]').on('change', function() {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
+    
+    $("#checkboxes").click(function(e) { 
+      var checkbox = $(this);
+      if (checkbox.is(":checked")) {
+       //check it 
+      } else {
+       // prevent from being unchecked
+        this.checked=!this.checked;
+      }
+   });
+   
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
