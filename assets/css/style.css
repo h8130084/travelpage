@@ -30,7 +30,7 @@
   width: 100%;
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+/* Add some top padding to the page content to prevent sudden quick movement */
 
 .sticky+.content {
   padding-top: 60px;
@@ -44,32 +44,13 @@
 }
 
 
-/*--------------------------------------------map.css*/
-
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
+/*--------------------------------------------map*/
 
 #map {
   min-height: 500px;
   margin-top: 25px;
 }
 
-#description {
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-}
-
-.pac-controls {
-  display: inline-block;
-  padding: 5px 11px;
-}
-
-.pac-controls label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
-}
 
 #pac-input {
   background-color: #fff;
@@ -87,13 +68,15 @@
   border-color: #4d90fe;
 }
 
-#title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 25px;
-  font-weight: 500;
-  padding: 6px 12px;
+#search {
+  margin-top: 40px;
+  margin-bottom: 25px;
+  font-family: Indie Flower, cursive;
+  font-size: 70px;
+  text-align: center;
+
 }
+
 
 
 /* Page content */
@@ -109,6 +92,7 @@
   padding-top: 10px;
 }
 
+
 /* check box row*/
 
 .checkboxes {
@@ -116,6 +100,8 @@
   padding-top: 25px;
   font-size: 20px;
   text-align: center;
+  font-family: Indie Flower, cursive;
+
 }
 
 /* search bar row*/
@@ -125,14 +111,13 @@
   padding-top: 10px;
   text-align: center;
 
-
 }
 
 /* table  */
 
 #listing {
   margin-top: 50px;
-  
+ 
 }
 
 
@@ -155,36 +140,17 @@ th {
 
 }
 
-
-
-#search {
-  margin-top: 40px;
-  margin-bottom: 25px;
-  font-family: Indie Flower, cursive;
-  font-size: 70px;
-  text-align: center;
-
-}
-
 .sub-heading {
   font-family: Indie Flower, cursive;
   text-align: center;
-
-}
-
-.checkboxes {
-
-  font-family: Indie Flower, cursive;
-  /*margin-left: 12px;*/
-
 }
 
 .search_section {
   border-style: solid;
   border-width: 5px;
   background-color: #E5EDF9;
-
 }
+
 
 /*--------------------------------------------Media Queries*/
 

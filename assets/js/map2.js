@@ -2,7 +2,7 @@
 
 // W3 schools//
 // When the user scrolls the page, execute myFunction //
-window.onscroll = function() { myFunction() };
+window.onscroll = function() { navBarFunction() };
 
 // Get the navbar
 var navbar = document.getElementById("navbar");
@@ -11,7 +11,7 @@ var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position.//
-function myFunction() {
+function navBarFunction() {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
     }
@@ -23,11 +23,8 @@ function myFunction() {
 
 
 
+
 // google maps api documentatation used//
-
-
-
-
 
 //global variables//
 var allMarkers = [];
@@ -56,15 +53,17 @@ function initMap() {
     $('input[type="checkbox"]').on('change', function() {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
-    
-   
-//   stops user from unselecting a checkbox and in turn ensures at least one tickbox is always selected
-   $('.tick').on('change', function(e) {
-    if ($('.tick:checked').length == 0 && !this.checked)
-    	this.checked = true;
-});
+
+
+    //   stops user from unselecting a checkbox and in turn ensures at least one tickbox is always selected
+    $('.tick').on('change', function(e) {
+        if ($('.tick:checked').length == 0 && !this.checked)
+            this.checked = true;
+    });
 
     var markers = [];
+    
+    
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function() {
@@ -72,8 +71,8 @@ function initMap() {
         var new_location = new google.maps.LatLng(places[0].geometry.location.lat(), places[0].geometry.location.lng());
         map.setCenter(new_location);
 
-        var accomodationCheckBox = document.getElementById('accomodation-box').checked;
 
+        var accomodationCheckBox = document.getElementById('accomodation-box').checked;
         if (accomodationCheckBox == true) {
             var searchType = "lodging";
         }
@@ -85,7 +84,6 @@ function initMap() {
         };
 
         var barCheckBox = document.getElementById('bar-box').checked;
-
         if (barCheckBox == true) {
             var searchType = "restaurant";
             var searchType = "bar";
@@ -97,17 +95,18 @@ function initMap() {
             type: [searchType]
         };
 
-        var museumCheckBox = document.getElementById('attraction-box').checked;
 
+        var museumCheckBox = document.getElementById('attraction-box').checked;
         if (museumCheckBox == true) {
             var searchType = "museum";
         }
-
+        
         var request = {
             location: new_location,
             radius: '1500',
             type: [searchType]
         };
+
 
 
         service = new google.maps.places.PlacesService(map);
@@ -121,16 +120,18 @@ function initMap() {
     markers = [];
 }
 
+
+
+
 function callback(results, status) {
     clearMarkers();
     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
         var htmlString = `<tr>
-                <td> <b>Location<td>
-                <td> <b>Name<td>
-                <td> <b>Rating<td>
-                <td> <b>Number of Ratings<td>
-                
+                <td> <b>Location</b></td>
+                <td> <b>Name</b></td>
+                <td> <b>Rating</b></td>
+                <td> <b>Number of Ratings</b></td>
             </tr>`;
 
         for (var i = 0; i < results.length; i++) {
@@ -152,20 +153,20 @@ function callback(results, status) {
                 totalRating = "no rating avilable";
             }
 
-
             htmlString += `<tr>
-                <td>${mapLetter}<td>
-                <td>${name}<td>
-                <td>${rating}<td>
-                <td>${totalRating}<td>
-                
+                <td>${mapLetter}</td>
+                <td>${name}</td>
+                <td>${rating}</td>
+                <td>${totalRating}</td>
             </tr>`;
         }
-
+        
         $('#results').html(htmlString);
     }
-
 }
+
+
+
 
 function createMarker(place) {
     var marker = new google.maps.Marker({
@@ -183,6 +184,8 @@ function createMarker(place) {
         infoWindow.open(map, this);
     });
 }
+
+
 
 
 function clearMarkers() {

@@ -82,15 +82,19 @@ I needed to allow the search bar to seach for the destination which took testing
 I then added the functionality to allow the search bar to search for nearby locations. 
 I used a console log in multiple places to  assess whther the code was working. 
 
-I did more background research as I was unable to get the markers to load however I could see in the console 
-that informaiton was being returned. after numerous attempts I made a index2 and a map2 file to try a differnt approach
+I did more background research as I was unable to get the markers to load, however I could see in the console 
+that informaiton was being returned from my console.log . After numerous attempts I made an index2 and a map2 file to try a differnt approach
 and I was sucessful in getting the markers to load however I was unable to link the search bar.  Again this took a number 
-attempts untill I finally  was ablet get the correct functionality. 
+attempts of trial and error.  I continued to assess and attemt to fix the code to the point where I had 2 files , neither of which were responding
+in the way I wanted. After numerous attempts the website was placing the markers correctly upon the search. due to the long period of time this took I sought
+advice from my mentor. Following the feedback I managed to simplfy the code and build on that to then allow the the specific nearby seraches to be added. 
 
-I tested the links on the navbar to ensure the location the page jumped to was corect in relaton to the navbar link. 
+I tested the links on the navbar to ensure the location the page jumped to was corect in relaton to the navbar link I did have a seperate js page for 
+the nav bar however I felt this was inapropriate and I  put it into the same as my map2.js file. 
 
-When assessing the responsiveness I found the desktop worked correctly however the smallers screens were not working as intended
-and the Ipad pro screen had a margin of white page.  I incorperated the correct code to allow the website to be more responsive across all devices. 
+When assessing the responsiveness I found the desktop worked correctly however the smaller screens were not working as intended
+and the Ipad pro screen had a margin of white page.  I incorperated a media query and amended some of my html using the bootstrap grid method to allow 
+for a much more responsive website across multiple devices.
 
 I tested this regularly as I input different locations and texts to ensure the the transisiton from desktop to mobile was smooth
 and looked professiona, I also asked my peers to see if the website had an issue when they used it. 
@@ -100,30 +104,33 @@ and displaying hte results in differnt format. However whilst completing the pro
 I therefore changed the design to have tabs so the user can select the type of search. This allowed the user to choose a specific search
 rather than be provided with information they may not want. It also allowed a bigger number of places in the search result for each location.
 
-The CSS across the whole site has been amended on a number of ocassions. 
+The CSS across the whole site has been amended on a number of ocassions. This was mainly due to trial and error of assessing the how the website
+looked acrsoss multiple devices.
 After feedback on my previous project I havd decided with a 2 colour website rather than a host of colours.
 
 When testing the final website I realised that users were able to deselect thier option which would mean there was no option selected
-and the search would not run correctyl. Therefore I have added in JS to stop the user being able to deselect thier option so the user will always have one and only one check box 
-selected for thier search.
+and the search would not run correctly. Therefore I have added code to the map2.js file to stop the user being able to deselect any option so the user will always have one and only one check box 
+selected for thier search. This works becuase I previously anticipated the error that a user was able to select multiple boxes and when the website first
+loads up there was no box selceted. As I had previosuly anticipated these issues and addressed them it meant the additonal code was an add on to the features designed
+to stop the website being used incorrectly.
 
 I had many trial by error attmeptes at getting the JavaScript code to run correctly on the majority of the of the functionality of the code.
 
 
 # Deployment
 
-The deployment was complted through github 
+The deployment was complted through github
 
 # Credits and media
 
 * I have used google maps API documentation to help implement the map functionality and the search bar which has been used thouhgout the map2.js file
 * I used w3school website for assistnace with learning how to incorperate a sticky nav bar
 * I used google fonts to style the font on the page
-* I used mockflow to make a wireframe for the intiail planning and idea phase 
+* I used mockflow to make a wireframe for the intiail planning and idea phase
 
 # Acknowledgement
 
-The inspiration for this project came from the goolgem aps documentaton and other travel search websites such as expedia.
+The inspiration for this project came from the google maps API documentaton and other travel search websites such as expedia.
 
 
 
