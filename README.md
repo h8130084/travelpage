@@ -114,6 +114,9 @@ selected for thier search. This works becuase I previously anticipated the error
 loads up there was no box selceted. As I had previosuly anticipated these issues and addressed them it meant the additonal code was an add on to the features designed
 to stop the website being used incorrectly.
 
+There is still one issue that I feel is not overly user friendly. When the user types thier destinaton and searches for one of the 3 nearby places it generates
+results. However if I then changed the checkbox to a different search the user can not just press enter they need to retype the destination into the searchbox. 
+
 I had many trial by error attmeptes at getting the JavaScript code to run correctly on the majority of the of the functionality of the code.
 
 

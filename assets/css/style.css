@@ -17,8 +17,12 @@
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px;
+ padding-left: 10px;
+ padding-right: 10px;
+ padding-bottom: 2px;
+ padding-top: 10px;
   text-decoration: none;
+  margin-left: 10px;
 }
 
 
@@ -39,7 +43,7 @@
 /*--------------------------------------------Hover.css*/
 
 .hvr-sweep-to-bottom:before {
-  background: rgba(0, 0, 0, 0.2);
+  background: #B9B7B7;
   height: 120px;
 }
 
